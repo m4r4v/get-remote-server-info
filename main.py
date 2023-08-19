@@ -5,24 +5,28 @@ from termcolor import colored
 
 
 #Title
-print(colored('\n>> Type the website address to get inforation from <<', 'yellow', attrs=['bold', 'underline']))
-#subtitle
-print(colored('example: google.com', 'dark_grey'))
+print(colored('\n>>> WEBSITE SERVER INFORMATION <<<', 'cyan', attrs=['bold', 'underline']))
+#Description
+print(colored('Type the website address to get information from', 'light_yellow'))
+#Example
+print(colored('example: example.com', 'dark_grey'))
+#input
+domain = input('Domain: ')
+print("\n" + colored('Looking up information for: ', 'light_cyan') + colored('https://' + domain, 'light_blue'))
+
+req = requests.get('https://' + domain)
+
+ip = socket.gethostbyname(domain)
 
 try:
-    while True:
-        input = input('Domain: https://')
+    print('\n' + colored('IP address: ', 'light_cyan') + colored(ip, 'light_blue'))
 
-        req = requests.get('https://' + input)
+    for key, value in req.headers.items():
+        print(colored(key, 'light_cyan') + ": " + colored(value, 'light_blue'))
 
-        ip = socket.gethostbyname(input)
+    pass
 
-        print('\n' + colored('IP address: ', 'light_yellow') + colored(ip, 'green'))
+    print("\n" + colored('Author: m4r4v', 'light_yellow'))
 
-        for key, value in req.headers.items():
-            print(colored(key, 'light_yellow') + ": " + colored(value, 'green'))
-
-        pass
 except KeyboardInterrupt:
-    print("\n" + colored('Process interrupted, try again', 'red') + "\n")
-# print(colored(req.headers, 'light_green'))
+    print("\n\n" + colored('Process interrupted, try again', 'red', attr=['bold']) + "\n")
