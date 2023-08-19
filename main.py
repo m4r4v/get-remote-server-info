@@ -14,7 +14,7 @@ print(colored('example: example.com', 'dark_grey'))
 domain = input('Domain: ')
 print("\n" + colored('Looking up information for: ', 'light_cyan') + colored('https://' + domain, 'light_blue'))
 
-req = requests.get('https://' + domain)
+req = requests.get('https://' + domain, verify=False)
 
 ip = socket.gethostbyname(domain)
 
