@@ -1,6 +1,7 @@
 import requests
 import socket
 from termcolor import colored
+import urllib3
 
 
 
@@ -14,6 +15,7 @@ print(colored('example: example.com', 'dark_grey'))
 domain = input('Domain: ')
 print("\n" + colored('Looking up information for: ', 'light_cyan') + colored('https://' + domain, 'light_blue'))
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 req = requests.get('https://' + domain, verify=False)
 
 ip = socket.gethostbyname(domain)
