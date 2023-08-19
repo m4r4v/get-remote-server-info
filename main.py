@@ -3,8 +3,6 @@ import socket
 from termcolor import colored
 import urllib3
 
-
-
 #Title
 print(colored('\n>>> WEBSITE SERVER INFORMATION <<<', 'cyan', attrs=['bold', 'underline']))
 #Description
